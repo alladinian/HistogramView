@@ -2,6 +2,17 @@ import SwiftUI
 import CoreGraphics
 import Accelerate
 
+#if canImport(UIKit)
+import UIKit
+public typealias HistogramImage = UIImage
+#endif
+
+#if canImport(AppKit)
+import AppKit
+public typealias HistogramImage = NSImage
+#endif
+
+
 /// A SwiftUI Image Histogram View (for RGB channels)
 public struct HistogramView: View {
 
@@ -17,8 +28,8 @@ public struct HistogramView: View {
     /// The scale of each layer. Default is `1`
     public let scale: CGFloat
 
-    public init(image: CGImage, channelOpacity: CGFloat = 1, blendMode: BlendMode = .screen, scale: CGFloat = 1) {
-        self.image          = image
+    public init(image: HistogramImage, channelOpacity: CGFloat = 1, blendMode: BlendMode = .screen, scale: CGFloat = 1) {
+        self.image          = image.cgImage!
         self.channelOpacity = channelOpacity
         self.blendMode      = blendMode
         self.scale          = scale

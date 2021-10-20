@@ -59,3 +59,14 @@ extension CGImage {
     }
 
 }
+
+#if os(macOS)
+import AppKit
+public extension NSImage {
+    var cgImage: CGImage? {
+        guard let imageData = tiffRepresentation else { return nil }
+        guard let sourceData = CGImageSourceCreateWithData(imageData as CFData, nil) else { return nil }
+        return CGImageSourceCreateImageAtIndex(sourceData, 0, nil)
+    }
+}
+#endif
