@@ -47,6 +47,7 @@ public struct HistogramView: View {
                 .blendMode(blendMode)
             }
             .id(image)
+            .drawingGroup()
         }
     }
 }
