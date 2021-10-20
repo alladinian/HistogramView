@@ -30,7 +30,7 @@ public let scale: CGFloat
 
 ## How fast is this thing?
 
-Under the hood the histogram calculation is performed by `Accelerate`'s `vImageHistogramCalculation_ARGB8888` for RGB channels, so it's pretty good actually.
+Under the hood the histogram calculation is performed by `Accelerate`'s `vImageHistogramCalculation_ARGB8888` for RGB channels, so it's pretty fast actually.
 Fast enough to be perfomed synchronously (although didn't test it on gigantic images).
 
 ## How is the graph curve produced?
